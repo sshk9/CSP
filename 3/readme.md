@@ -1,5 +1,3 @@
-# Python Coding Style on GitHub Before and After Generative AI: A Gendered Analysis
-
 Data-collection and measurement pipeline for a longitudinal, paired study of Python code on GitHub.
 The same users are measured in a **pre-LLM** window and a **post-LLM** window, and grouped by
 **inferred public gender presentation** (not confirmed gender identity).
