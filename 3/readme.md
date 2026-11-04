@@ -7,7 +7,7 @@ It contains no results. The statistical analysis script (`analyze.py`) is not wr
 
 ---
 
-## 1. Study windows
+## Study windows
 
 | Window | Dates (UTC) |
 |---|---|
@@ -17,7 +17,7 @@ It contains no results. The statistical analysis script (`analyze.py`) is not wr
 
 ---
 
-## 2. Setup
+## Setup
 
 **Requirements:** Python 3.10+, `git` installed and on PATH, a GitHub account.
 
@@ -42,7 +42,7 @@ $env:STUDY_SALT   = "your-fixed-secret"
 
 ---
 
-## 3. Pipeline at a glance
+## Pipeline
 
 ```
 collect.py discover-repos  ->  candidates.csv          (who might qualify)
@@ -58,7 +58,7 @@ Order of work: **collect, then classify, then metrics.** Screening is automated,
 
 ---
 
-## 4. Step-by-step run
+## Step-by-step run
 
 1. **Build the candidate pool**
    ```powershell
@@ -99,7 +99,7 @@ All steps are resumable. To restart a step from scratch, delete only that step's
 
 ---
 
-## 5. `collect.py`
+## `collect.py`
 
 ### Commands
 
@@ -168,7 +168,7 @@ Vendored or third-party folders, `venv`, `build`, `dist`, `migrations`, docs, ex
 
 ---
 
-## 6. `classify.py`
+## `classify.py`
 
 Labels **inferred public gender presentation** from information the profile itself shows. It does not determine gender identity.
 
@@ -214,7 +214,7 @@ Only `masculine` and `feminine` users enter the study. `ambiguous` and `anonymou
 
 ---
 
-## 7. `metrics.py`
+## `metrics.py`
 
 Computes metrics for each retained file of each selected user, then aggregates to user x period (files from one developer are not independent, so analysis should use user-level values or mixed models).
 
@@ -278,17 +278,7 @@ Notes on definitions:
 - **No automated tests.** Add a few fixture files with known metric values.
 - **`analyze.py` is missing.** Planned: user-level paired comparisons, mixed model `metric ~ period * presentation + covariates + (1|user)`, effect sizes with confidence intervals, Holm or Benjamini-Hochberg correction across metrics, and a power check for the interaction.
 
----
-
-## 8. Privacy and ethics
-
-- **Private (never share or commit):** `candidates.csv`, `screen_log.csv`, `manifest.csv`, `coding_*.csv`, `consensus.csv`, `repo_cache/`, and anything containing logins, names, avatars or repo names.
-- **Shareable:** files keyed only by `uid`, hashed repo/file ids: `selected_users.csv`, `files_metrics.csv`, `user_period.csv`.
-- Do not publish `STUDY_SALT`. Anyone with it and a username list can re-identify uids.
-- Only public data is used. Check GitHub's Terms of Service and your institution's ethics requirements. Do not name individual users in the paper.
-- Gender labels are **inferred public presentation**, not gender identity. State this wherever results are reported.
----
-## 9. Troubleshooting
+## Troubleshooting
 
 | Problem | Likely cause and fix |
 |---|---|
